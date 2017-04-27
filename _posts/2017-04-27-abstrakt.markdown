@@ -1,0 +1,105 @@
+---
+layout: post
+title: "Vorteile Abstrakter Klassen"
+date: 2017-04-27 12:00 +0100
+categories: se2
+author: "Michael Strassberger"
+---
+
+Dateien:
+
+* [Eclipse Projekt]({{ site.url }}/downloads/se2-2017/abstrakt-vererbung.zip)
+* [Violet UML Datei]({{ site.url }}/downloads/se2-2017/abstrakt-vererbung.class.violet.html)
+
+
+Wir nehmen die Modellierung mehrer Konto typen als Beispiel für
+die Vorteile von Abstrakten Klassen. Zunächst schreiben wir
+unsere AbstraktKonto Klasse, welche die für alle Kontotypen
+gemeinsamen Operationen implementiert.
+
+{% highlight java linenos %}
+public abstract class AbstraktKonto 
+{
+	protected int _saldo;
+
+	public final void einzahlen(int betrag) 
+	{
+		_saldo += betrag;
+	}
+
+	abstract public void abheben(int betrag);
+
+	public int gibSaldo() 
+	{
+		return _saldo;
+	}
+}
+{% endhighlight %}
+
+Erklärungen zu den zeilen:
+* Z.3 ***protected*** bewirkt hier, dass das Feld auch im subtyp ganz normal wie eine private exemplarvariable verwendet werden kann
+* Z.5 das ***final*** bewirkt, dass ein subtyp diese Methode nicht überschreiben darf.
+* Z.10 In abstrakten Klassen dürfen auch abstrakte Methoden deklariert werden. Konkrete Klassen deren Supertyp eine solche Klasse ist müssen dann die abstrakten methoden implementieren, ähnlich wie bei dem Interface. #
+
+Nun nachdem wir mit unseren Abstrakten Klasse das allgemein verhalten eines Kontos implementiert haben. Widmen wir uns jetzt unserer ersten Konkreten Klasse dem
+Sparkonto:
+{% highlight java linenos %}
+public class Sparkonto extends AbstraktKonto 
+{
+	@Override
+	public void abheben(int betrag) 
+	{
+		if(super._saldo >= betrag)
+		{
+			super._saldo -= betrag;
+		}
+	}
+}
+{% endhighlight %}
+
+Es fällt auf das wir hier nur die implementation für die ***abheben*** operation schreiben müssen. Das ***einzahlen*** und ***gibSaldo*** wird von der Abstrakten Klasse geerbt
+Damit der Vorteil etwas deutlicher wird implementieren wir jetzt noch ein Girokonto mit dispo
+
+{% highlight java linenos %}
+public class Girokonto extends AbstraktKonto 
+{
+	private int _dispo;
+	
+	@Override
+	public void abheben(int betrag) 
+	{
+		if(super._saldo + _dispo >= betrag)
+		{
+			super._saldo -= betrag;
+		}
+	}
+}
+{% endhighlight %}
+
+Durch die implementationsvererbung konnten wir in diesen Fall uns sparen das ***einzahlen*** und saldo ausgeben mittels ***gibSaldo*** mehrfach zu implementieren.
+Um das Beispiel weiter auszubauen könnte man vereinfacht davon ausgehen, das ein Tagesgeldkonto in etwa dem Sparkonto entspräche und eine Kreditkarte einen Girokonto.
+Wenn wir das mithilfe eines UML-Klassendiagrammes modellieren sähe das folgendermaßen aus:  
+![UML Klassendiagramm Konten]({{ site.url }}/images/abstrakt-uml-konto.png)  
+
+Ein weiterer Vorteil unserer Implementations vererbung, ist das wenn wir jetzt merken, dass unsere ***einzahlen*** methode einen Fehler hat, dass wir dies nur einmal ändern müssen.
+Dazu nehmen wir einfach mal an, dass es vorgekommen ist das ***einzahlen*** mit negativen Zahlen aufgerufen worden ist. Das würde einen abheben entsprechen was wir aber nicht wollen.
+Um diesen Fehler zu beheben müssen wir nur AbstraktKonto abändern.
+
+{% highlight java linenos %}
+public abstract class AbstraktKonto 
+{
+	protected int _saldo;
+
+	public final void einzahlen(int betrag) 
+	{
+		if(betrag > 0)
+		{
+			_saldo += betrag;
+
+		}
+	}
+{% endhighlight %}
+
+Dank der Vererbung haben wir nun den Fehler in allen 4 Klassen behoben.
+
+Ich hoffe es wurde deutlich warum Implementationsvererbung sinnvoll und mächtig zugleich ist in der Softwareentwicklung. Bis zum nächsten mal!
