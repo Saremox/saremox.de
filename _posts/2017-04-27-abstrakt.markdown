@@ -17,23 +17,23 @@ die Vorteile von Abstrakten Klassen. Zunächst schreiben wir
 unsere AbstraktKonto Klasse, welche die für alle Kontotypen
 gemeinsamen Operationen implementiert.
 
-{% highlight java linenos %}
-public abstract class AbstraktKonto 
-{
-	protected int _saldo;
+    {% highlight java linenos %}
+    public abstract class AbstraktKonto 
+    {
+        protected int _saldo;
 
-	public final void einzahlen(int betrag) 
-	{
-		_saldo += betrag;
-	}
+        public final void einzahlen(int betrag) 
+        {
+            _saldo += betrag;
+        }
 
-	abstract public void abheben(int betrag);
+        abstract public void abheben(int betrag);
 
-	public int gibSaldo() 
-	{
-		return _saldo;
-	}
-}
+        public int gibSaldo() 
+        {
+            return _saldo;
+        }
+    }
 {% endhighlight %}
 
 Erklärungen zu den zeilen:
