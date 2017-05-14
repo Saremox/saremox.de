@@ -1,0 +1,65 @@
+---
+layout : post
+title : 'Hierarchie mit super'
+author : 'Michael Strassberger'
+date : 2017-05-14 14:00
+categories : se2
+---
+Dateien:
+
+* [Violet UML Datei]({{ site.url }}/downloads/se2-2017/2017-05-10-vererb-hierachie.class.violet.html)
+
+## super und Konstruktoren
+
+Wie bereits häufig in SE erwähnt gibt es immer einen impliziten Konstruktor sofern kein expliziter vorhanden ist. Wir gehen von folgenden Klassen Hierarchie aus:  
+![UML Klassendiagramm Hierarchie]({{ site.url }}/images/2017-05-10-vererb-hierachie.png)  
+Wenn wir ein neues Exemplar von ActionDVD erstellen passieren folgende Konstruktor aufrufe:
+
+* new ActionDVD()
+    * super() -> DVD()
+        * super() -> AbstractMedium()
+
+Fügen wir nun innerhalb unserer Vererbungshierarchie einen expliziten parametrisierten Konstruktor ein Beispielsweise 'AbstractMedium(String, String)' dann würde der Aufruf so aussehen:
+
+* new ActionDVD()
+    * super() -> DVD()
+        * super(?,?) -> AbstractMedium(String, String)
+
+Java weiß nun in diesen Fall nicht wie bei den impliziten Konstruktor von DVD der explizite parametrisierte von AbstractMedium aufzurufen ist. Es wird entsprechend eine Fehlermeldung vom Compiler ausgegeben. Dies können wir Auflösen indem wir für DVD einen expliziten parameterlosen Konstruktor schreiben der dort dafault Werte einträgt:
+
+{% highlight java linenos %}
+public DVD()
+{
+    super("hallo","welt");
+}
+{% endhighlight %}
+
+* new ActionDVD()
+    * super() -> DVD()
+        * super("hallo","welt") -> AbstractMedium(String, String)
+
+Eine weitere Möglichkeit ist, einen expliziten parametrisierten Konstruktor einzuführen.
+
+{% highlight java linenos %}
+public DVD(String s1, String s2)
+{
+    super(s1,s2);
+}
+{% endhighlight %}
+
+Dadurch muss nun aber auch ActionDVD einen expliziten Konstruktor definieren ansonsten sieht die Aufruf-Hierachie so aus:  
+* new ActionDVD()
+    * super(?,?) -> DVD(String, String)
+
+{% highlight java linenos %}
+public ActionDVD()
+{
+    super("hallo","welt");
+}
+{% endhighlight %}
+
+* new ActionDVD()
+    * super("hallo", "welt") -> DVD(String, String)
+        * super("hallo","welt") -> AbstractMedium(String, String)
+
+Ich hoffe dadurch wurde etwas deutlicher wann wir das ***super*** bei der vererbung von Klassen mit Expliziten und Impliziten Konstruktoren brauchen.
