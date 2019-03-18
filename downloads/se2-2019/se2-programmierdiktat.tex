@@ -1,0 +1,354 @@
+\documentclass[mathserif]{beamer}
+\usepackage{listings}
+\lstset{language=Java}
+
+\usetheme{Boadilla}
+\usecolortheme{seahorse}
+
+\setbeamertemplate{enumerate items}{(\arabic{enumi})}
+\setbeamertemplate{itemize items}[circle]
+\setbeamertemplate{navigation symbols}{}
+
+\title{Vorbereitung auf das Programmierdiktat}
+\author{Michael Strassberger\\michael.strassberger@uni-hamburg.de\\3strassb@informatik.uni-hamburg.de}
+
+\begin{document}
+
+\begin{frame}
+\titlepage
+\end{frame}2
+
+\begin{frame}{Fahrplan}
+\tableofcontents
+\end{frame}
+
+\section{Syntax einer Klasse}
+
+\begin{frame}[fragile]
+\frametitle{Klassen und Interfaces definieren (Begriffe Rumpf und Kopf sollten auch bekannt sein)}
+\pause
+    \begin{lstlisting}
+class Buch // Kopf
+{
+    // Rumpf
+}
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+interface Medium // Kopf
+{
+    // Rumpf
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Implementationsbeziehungen zwischen einer Klasse und einem Interface definieren}
+\pause
+    \begin{lstlisting}
+class Buch implements Medium 
+{
+
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Variablen deklarieren, initialisieren, zuweisen}
+\pause
+    \begin{lstlisting}
+int nummer;
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+int nummer = 42;
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+    nummer = 43;
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{(Zustands-) Felder (alias Exemplarvariablen) deklarieren}
+    \begin{lstlisting}
+class Buch implements Medium 
+{
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+    int _seiten;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Zugriffsmodifikatoren verwenden k\"onnen (public/private)}
+    \begin{lstlisting}
+class Buch implements Medium 
+{
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+    private int _seiten;
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Konstruktoren definieren}
+    \begin{lstlisting}
+class Buch implements Medium 
+{
+    private int _seiten;
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+    public Buch()
+    {
+        _seiten = 42;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Werte von Methoden zurückgeben lassen (Schlüsselwort "return")}
+    \begin{lstlisting}
+class Buch implements Medium 
+{
+    private int _seiten;
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+    public int gibSeitenAnzahl()
+    {
+        return _seiten;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Klassenvariablen deklarieren, initialisieren}
+    \begin{lstlisting}
+class Buch implements Medium
+{
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+    private static int anzahlBuecher;
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+    static
+    {
+        anzahlBuecher = 0;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Private und \"offentliche Methoden/Operationen definieren, sowohl als Exemplar- als auch als Klassenmethoden (Begriffe "Rumpf" und "Kopf" sollten auch bekannt sein)}
+ \begin{lstlisting}
+    public int gibSeitenAnzahl()
+    {
+        return _seiten;
+    }
+    \end{lstlisting}
+    \pause
+     \begin{lstlisting}
+    private int gibSeitenAnzahlGeheim()
+    {
+        return _seiten;
+    }
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Klassenmethoden}
+    \begin{lstlisting}
+class Buch implements Medium
+{
+    private static int anzahlBuecher;
+    static
+    {
+        anzahlBuecher = 0;
+    }
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+    public static int gibAnzahlBuecher()
+    {
+        return anzahlBuecher;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Recap: Rumpf von Klassen und Methoden}
+    \begin{lstlisting}
+class Buch implements Medium // Klassen Kopf
+{
+    // Klassen Rumpf
+
+    public Buch() // Methoden Kopf
+    {
+        // Methoden Rumpf
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Parameter deklarieren und verwenden}
+    \begin{lstlisting}
+class Buch implements Medium
+{
+    private int _seiten;
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+    public void setzeSeitenAnzahl(int seiten)
+    {
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+        _seiten = seiten;
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+    \frametitle{Main Methode}
+    \begin{lstlisting}
+public class SE2Tutorium
+{
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+    public static void main(String[] args)
+    {
+
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Objekte erzeugen}
+    \begin{lstlisting}
+public class SE2Tutorium
+{
+    public static void main(String[] args)
+    {
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+        Buch bluej = new Buch();
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Umgang mit Referenzvariablen und der Punktnotation}
+    \begin{lstlisting}
+public class SE2Tutorium
+{
+    public static void main(String[] args)
+    {
+        Buch bluej = new Buch();
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+        int bluejSeiten = bluej.getSeitenAnzahl();
+    \end{lstlisting}
+    \pause
+    \begin{lstlisting}
+        bluej.setzeSeitenAnzahl(bluejSeiten + 1);
+    }
+}
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}
+    \center{\huge{Noch Fragen zu Klassen und Methoden R\"umpfen}}
+\end{frame}
+
+\section{Datenstrukturen}
+
+\begin{frame}[fragile]
+\frametitle{Umgang mit Basisdatentypen}
+    \begin{enumerate}
+        \item byte
+        \item short
+        \item int
+        \item long
+        \pause
+        \item float
+        \item double
+        \pause
+        \item char
+    \end{enumerate}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Umgang mit Arrays (deklarieren, initialisieren, schreibender und lesender Zugriff)}
+\pause
+    \begin{lstlisting}
+int[] zahlenkette
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+zanlenkette = new int[42]
+    \end{lstlisting}
+\end{frame}
+
+\begin{frame}[fragile]
+\frametitle{Umgang mit Listen und Mengen}
+\pause
+    \begin{lstlisting}
+List<Integer> zahlenListe;
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+zahlenListe = new ArrayList();
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+zahlenListe.add(100);
+    \end{lstlisting}
+\pause
+    \begin{lstlisting}
+zahlenListe.remove(0);
+    \end{lstlisting}
+\end{frame}
+
+\section{Kontrollstrukturen}
+
+\begin{frame}[fragile]
+\frametitle{Switch-Anweisungen schreiben}
+\pause
+    \begin{lstlisting}
+switch (zahl) {
+    case 10:
+        // do things
+        break;
+    default:
+        break
+}
+
+    \end{lstlisting}
+\end{frame}
+
+\section{Fragen}
+\begin{frame}
+    \center{\huge{Gibt es noch Fragen?}}
+    \pause
+    \center{\huge{Dann viel Erfolg beim Diktat!}}
+\end{frame}
+\end{document}
