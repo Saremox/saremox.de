@@ -3,3 +3,14 @@ _site
 .jekyll-metadata
 Gemfile.lock
 .bundle/config
+*.snm
+*.vrb
+*.synctex.gz
+*.nav
+*.dvi
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
