@@ -2,7 +2,7 @@
 layout: post
 title: "Programmierdiktat vorbereitung"
 date: 2017-04-19 21:00 +0100
-categories: se2
+categories: se2 se2-2017
 author: Michael Strassberger
 ---
 

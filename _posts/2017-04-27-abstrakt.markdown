@@ -2,7 +2,7 @@
 layout: post
 title: "Vorteile Abstrakter Klassen"
 date: 2017-04-27 12:00 +0100
-categories: se2
+categories: se2 se2-2017
 author: "Michael Strassberger"
 ---
 

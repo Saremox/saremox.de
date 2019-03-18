@@ -3,7 +3,7 @@ layout : post
 title : 'Schablonen und Sichtbarkeit'
 author : 'Michael Strassberger'
 date : 2017-05-14 14:00
-categories : se2
+categories : se2 se2-2017
 ---
 
 ## Schablonen- und Einschubmethoden
