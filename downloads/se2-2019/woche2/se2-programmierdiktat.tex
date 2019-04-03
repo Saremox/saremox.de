@@ -16,7 +16,7 @@
 
 \begin{frame}
 \titlepage
-\end{frame}2
+\end{frame}
 
 \begin{frame}{Fahrplan}
 \tableofcontents
@@ -25,25 +25,31 @@
 \section{Syntax einer Klasse}
 
 \begin{frame}[fragile]
-\frametitle{Klassen und Interfaces definieren (Begriffe Rumpf und Kopf sollten auch bekannt sein)}
-\pause
+\frametitle{Klassen und Interfaces definieren}
+\begin{itemize}
+    \item Begriffe: Kopf, Rumpf
+\end{itemize}
+\pause  
     \begin{lstlisting}
-class Buch // Kopf
+class Buch // KlassenKopf
 {
-    // Rumpf
+    // KlassenRumpf
 }
     \end{lstlisting}
 \pause
     \begin{lstlisting}
-interface Medium // Kopf
+interface Medium // InterfaceKopf
 {
-    // Rumpf
+    // InterfaceRumpf
 }
     \end{lstlisting}
 \end{frame}
 
 \begin{frame}[fragile]
 \frametitle{Implementationsbeziehungen zwischen einer Klasse und einem Interface definieren}
+\begin{itemize}
+    \item Deklariere die Klasse Buch welche das Interface Medium implementiert.
+\end{itemize}
 \pause
     \begin{lstlisting}
 class Buch implements Medium 
@@ -55,6 +61,9 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
 \frametitle{Variablen deklarieren, initialisieren, zuweisen}
+\begin{itemize}
+    \item Deklariere eine Variable mit dem Bezeichner "nummer" und dem primitiven Typen Integer.
+\end{itemize}
 \pause
     \begin{lstlisting}
 int nummer;
@@ -71,6 +80,9 @@ int nummer = 42;
 
 \begin{frame}[fragile]
 \frametitle{(Zustands-) Felder (alias Exemplarvariablen) deklarieren}
+\begin{itemize}
+    \item Deklariere ein Feld vom Typ Integer mit dem Bezeichner \_seiten
+\end{itemize}
     \begin{lstlisting}
 class Buch implements Medium 
 {
@@ -84,6 +96,9 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
 \frametitle{Zugriffsmodifikatoren verwenden k\"onnen (public/private)}
+\begin{itemize}
+\item Deklariere ein Feld vom Typ Integer mit dem Bezeichner \_seiten und der privaten Sichtbarkeit.
+\end{itemize}
     \begin{lstlisting}
 class Buch implements Medium 
 {
@@ -97,6 +112,9 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
 \frametitle{Konstruktoren definieren}
+\begin{itemize}
+    \item Schreibe einen Konstrutor, welcher das Feld \_seiten auf den Wert 42 initialisiert.
+\end{itemize}
     \begin{lstlisting}
 class Buch implements Medium 
 {
@@ -114,6 +132,9 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
 \frametitle{Werte von Methoden zurückgeben lassen (Schlüsselwort "return")}
+\begin{itemize}
+    \item Schreibe eine sondierende Methode, welche den Wert des Feldes \_seiten zur\"uckgibt.
+\end{itemize}
     \begin{lstlisting}
 class Buch implements Medium 
 {
@@ -131,6 +152,10 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
 \frametitle{Klassenvariablen deklarieren, initialisieren}
+\begin{itemize}
+    \item Deklariere ein Klassenfeld vom Typ Integer mit dem Bezeichner anzahlBuecher und der privaten Sichtbarkeit.
+    \item Schreibe einen statischen Konstrutor, der das Klassenfeld initialisiert.
+    \end{itemize}
     \begin{lstlisting}
 class Buch implements Medium
 {
@@ -168,6 +193,9 @@ class Buch implements Medium
 
 \begin{frame}[fragile]
     \frametitle{Klassenmethoden}
+    \begin{itemize}
+        \item Schreibe eine statische sondierende Methode, die die Anzahl der Bücher zurückgibt.
+        \end{itemize}
     \begin{lstlisting}
 class Buch implements Medium
 {
@@ -296,6 +324,7 @@ public class SE2Tutorium
     \end{enumerate}
 \end{frame}
 
+%TODO ausfuerhlicher schreiben.
 \begin{frame}[fragile]
 \frametitle{Umgang mit Arrays (deklarieren, initialisieren, schreibender und lesender Zugriff)}
 \pause
